@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Desa Maktangguk - Layanan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Layanan Masyarakat</h1>
+    </header>
+    <nav>
+        <a href="index.html">Beranda</a>
+        <a href="profil.html">Profil Desa</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="kontak.html">Kontak</a>
+    </nav>
+    <div class="container">
+        <h2>Layanan Surat Menyurat</h2>
+        <ul>
+            <li>Surat Keterangan Usaha (SKU)</li>
+            <li>Surat Keterangan Domisili</li>
+            <li>Surat Pengantar SKCK</li>
+            <li>Pengurusan Kartu Keluarga & KTP</li>
+        </ul>
+        <br>
+        <p><em>Catatan: Silakan membawa dokumen persyaratan asli ke Kantor Desa pada jam kerja.</em></p>
+    </div>
+    <footer>
+        <p>&copy; 2026 Pemerintah Desa Maktangguk.</p>
+    </footer>
+</body>
+</html>
