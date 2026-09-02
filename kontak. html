@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Desa Maktangguk - Kontak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Hubungi Kami</h1>
+    </header>
+    <nav>
+        <a href="index.html">Beranda</a>
+        <a href="profil.html">Profil Desa</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="kontak.html">Kontak</a>
+    </nav>
+    <div class="container">
+        <h2>Informasi Kantor Desa</h2>
+        <p><strong>Alamat:</strong> Jl. Raya Maktangguk No. 01</p>
+        <p><strong>Jam Operasional:</strong> Senin - Jumat (08.00 - 15.00 WIB)</p>
+        <p><strong>Email:</strong> info@desamaktangguk.id</p>
+    </div>
+    <footer>
+        <p>&copy; 2026 Pemerintah Desa Maktangguk.</p>
+    </footer>
+</body>
+</html>
