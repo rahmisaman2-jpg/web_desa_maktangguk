@@ -2,32 +2,687 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Desa Maktangguk - Beranda</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesona Desa Maktangguk - Portal Resmi</title>
+    <style>
+        /* --- 1. TEMA WARNA & RESET --- */
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --secondary: #0f172a;
+            --accent: #e0f2fe;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #334155;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- 2. NAVIGASI (FIXED NAVBAR) --- */
+        header {
+            background-color: var(--surface);
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        /* --- 3. LAYOUT UTAMA --- */
+        .wrapper {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        /* --- 4. HERO & STATS GRID --- */
+        .hero-card {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.9), rgba(3, 105, 161, 0.95)), 
+                        url('https://images.unsplash.com/photo-1596404768310-914979e27c00?auto=format&fit=crop&w=1200&q=80') center/cover;
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(2, 132, 199, 0.2);
+        }
+
+        .hero-card h4 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .hero-card h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-card p {
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            background-color: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.5rem;
+            border-radius: 14px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-item .number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* --- 5. PROFIL & ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-img img:hover {
+            transform: scale(1.03);
+        }
+
+        .about-text h3 {
+            color: var(--primary);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+        }
+
+        /* --- 6. CARD GRID POTENSI --- */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-body {
+            padding: 1.8rem;
+        }
+
+        .card-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .card-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* --- 7. TIMELINE SEJARAH --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            border-left: 3px solid var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.65rem;
+            top: 0.2rem;
+            width: 1rem;
+            height: 1rem;
+            background: var(--surface);
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin: 0.2rem 0 0.5rem;
+        }
+
+        /* --- 8. TABEL DATA DEMOGRAFI --- */
+        .table-container {
+            background: var(--surface);
+            border-radius: 16px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: #f1f5f9;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* --- 9. GALERI FOTO GRID --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 200px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.08);
+        }
+
+        /* --- 10. QUOTE SECTION --- */
+        .quote-box {
+            background: var(--surface);
+            border-left: 5px solid var(--primary);
+            padding: 2.5rem;
+            border-radius: 0 16px 16px 0;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .quote-box h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            font-style: italic;
+            margin-bottom: 0.8rem;
+        }
+
+        .quote-box p {
+            color: var(--text-light);
+        }
+
+        /* --- 11. FOOTER & KONTAK --- */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE (MOBILE) --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: var(--surface);
+                text-align: center;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+                padding: 1.5rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- NAVIGASI -->
     <header>
-        <h1>Selamat Datang di Desa Maktangguk</h1>
-        <p>Website Resmi Informasi Desa</p>
+        <nav>
+            <div class="logo">🌿 Desa Maktangguk</div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#potensi">Potensi</a></li>
+                <li><a href="#sejarah">Sejarah</a></li>
+                <li><a href="#data">Data Desa</a></li>
+                <li><a href="#galeri">Galeri</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <a href="index.html">Beranda</a>
-        <a href="profil.html">Profil Desa</a>
-        <a href="layanan.html">Layanan</a>
-        <a href="galeri.html">Galeri</a>
-        <a href="kontak.html">Kontak</a>
-    </nav>
-    <div class="container">
-        <h2>Sekilas Tentang Desa Maktangguk</h2>
-        <p>Desa Maktangguk merupakan desa yang asri dengan semangat gotong royong tinggi dan potensi alam yang melimpah.</p>
-        
-        <div class="card" style="margin-top: 20px;">
-            <h3>Pengumuman Terbaru</h3>
-            <p>Sensus penduduk dan pemutakhiran data keluarga akan dilaksanakan bulan depan.</p>
+
+    <!-- CONTAINER UTAMA -->
+    <main class="wrapper">
+
+        <!-- 1. HERO & STATISTIK -->
+        <section id="beranda" class="hero-card">
+            <h4>Dusun Karya Bhakti</h4>
+            <h1>Pesona Desa Maktangguk</h1>
+            <p>Menjelajahi keindahan alam, kehidupan masyarakat yang ramah, dan potensi tersembunyi Desa Maktangguk, Kabupaten Sambas, Kalimantan Barat.</p>
+            <a href="#profil" class="btn">Jelajahi Desa &rarr;</a>
+
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="number">1.250+</span>
+                    <span>Jiwa Penduduk</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">450 Ha</span>
+                    <span>Luas Wilayah</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">3 Dusun</span>
+                    <span>Wilayah Kerja</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">100%</span>
+                    <span>Gotong Royong</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PROFIL DESA -->
+        <section id="profil">
+            <div class="about-grid">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1596404768310-914979e27c00?auto=format&fit=crop&w=800&q=80" alt="Keindahan Maktangguk">
+                </div>
+                <div class="about-text">
+                    <h3>Selamat Datang</h3>
+                    <h2>Keindahan Maktangguk</h2>
+                    <p><strong>Desa yang asri dan penuh kehangatan masyarakat.</strong></p>
+                    <p>Desa Maktangguk merupakan salah satu desa di Kabupaten Sambas, Kalimantan Barat. Suasana pedesaan yang tenang, lingkungan yang hijau, serta kebersamaan masyarakat menjadi pesona utama desa ini.</p>
+                    <p>Pemerintah desa terus berupaya meningkatkan kualitas pelayanan publik serta mengoptimalkan sektor pertanian dan wisata lokal demi kemajuan bersama.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. POTENSI DESA -->
+        <section id="potensi">
+            <div class="section-header">
+                <h2>Potensi Utama Desa</h2>
+                <p>Sektor unggulan yang menjadi pilar perekonomian dan kebudayaan warga Desa Maktangguk</p>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-body">
+                        <span class="card-tag">Pertanian & Perkebunan</span>
+                        <h3 class="card-title">Hasil Alam Melimpah</h3>
+                        <p class="card-desc">Pengolahan komoditas lokal seperti padi, kelapa, dan tanaman perkebunan yang menjadi mata pencaharian utama warga.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <span class="card-tag">Wisata Alam</span>
+                        <h3 class="card-title">Sungai & Pemandangan Asri</h3>
+                        <p class="card-desc">Bantaran sungai yang alami serta pemandangan hijau sekeliling desa yang menyegarkan pikiran.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <span class="card-tag">Kebudayaan</span>
+                        <h3 class="card-title">Kearifan Lokal</h3>
+                        <p class="card-desc">Tradisi gotong royong dan kesenian daerah yang tetap dijaga serta diwariskan antar generasi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. TIMELINE SEJARAH -->
+        <section id="sejarah">
+            <div class="section-header">
+                <h2>Jejeak Perkembangan</h2>
+                <p>Tahapan penting dalam sejarah dan pembangunan Desa Maktangguk</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-date">Tahun 1985</span>
+                    <h3 class="timeline-title">Awal Pemukiman</h3>
+                    <p>Awal mula terbentuknya kawasan pemukiman warga di tepi aliran sungai utama Maktangguk.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">Tahun 2010</span>
+                    <h3 class="timeline-title">Pembangunan Akses Jalan</h3>
+                    <p>Peningkatan infrastruktur darat yang menghubungkan antar dusun dan pusat pemerintahan kecamatan.</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-date">Tahun 2026</span>
+                    <h3 class="timeline-title">Peluncuran Portal Digital</h3>
+                    <p>Implementasi teknologi informasi terpadu untuk pelayanan masyarakat dan transparansi informasi desa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. TABEL DATA DEMOGRAFI -->
+        <section id="data">
+            <div class="section-header">
+                <h2>Data Transparansi Desa</h2>
+                <p>Rincian statistik wilayah administratif dan kepemerintahan</p>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama Dusun</th>
+                            <th>Kepala Dusun</th>
+                            <th>Jumlah KK</th>
+                            <th>Status Wilayah</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dusun Karya Bhakti</td>
+                            <td>Ahmad Sudrajat</td>
+                            <td>120 KK</td>
+                            <td>Aktif</td>
+                        </tr>
+                        <tr>
+                            <td>Dusun Makmur</td>
+                            <td>Siti Nurhaliza</td>
+                            <td>95 KK</td>
+                            <td>Aktif</td>
+                        </tr>
+                        <tr>
+                            <td>Dusun Sejahtera</td>
+                            <td>Bambang Irawan</td>
+                            <td>110 KK</td>
+                            <td>Aktif</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 6. GALERI FOTO -->
+        <section id="galeri">
+            <div class="section-header">
+                <h2>Galeri Kegiatan</h2>
+                <p>Dokumentasi momen kebersamaan dan keindahan sudut Desa Maktangguk</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" alt="Pemandangan Alam">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1596404768310-914979e27c00?auto=format&fit=crop&w=600&q=80" alt="Kegiatan Desa">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" alt="Pertanian">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511497584788-8767611136f6?auto=format&fit=crop&w=600&q=80" alt="Sungai Desa">
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. QUOTE / SLOGAN -->
+        <section>
+            <div class="quote-box">
+                <h3>"Alam yang indah, masyarakat yang ramah, dan budaya yang berharga."</h3>
+                <p>Maktangguk, sebuah desa dengan pesona sederhana yang layak untuk dikenang.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER & KONTAK -->
+    <footer id="kontak">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Desa Maktangguk</h4>
+                <p>Kecamatan Sambas, Kabupaten Sambas</p>
+                <p>Kalimantan Barat, Indonesia</p>
+            </div>
+            <div class="footer-col">
+                <h4>Jam Operasional</h4>
+                <p>Senin - Jumat: 08.00 - 15.00 WIB</p>
+                <p>Sabtu & Minggu: Libur</p>
+            </div>
+            <div class="footer-col">
+                <h4>Hubungi Kami</h4>
+                <p>Email: info@desamaktangguk.id</p>
+                <p>Telepon: +62 812-3456-7890</p>
+            </div>
         </div>
-    </div>
-    <footer>
-        <p>&copy; 2026 Pemerintah Desa Maktangguk. Hak Cipta Dilindungi.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Pesona Desa Maktangguk. Seluruh Hak Cipta Dilindungi.</p>
+        </div>
     </footer>
+
+    <!-- JAVASCRIPT NAVBAR MOBILE -->
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById("navLinks");
+            nav.classList.toggle("active");
+        }
+    </script>
+
 </body>
-</html>
+                                                              </html> 
