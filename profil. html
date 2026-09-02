@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Desa Maktangguk - Profil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Profil Desa Maktangguk</h1>
+    </header>
+    <nav>
+        <a href="index.html">Beranda</a>
+        <a href="profil.html">Profil Desa</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="kontak.html">Kontak</a>
+    </nav>
+    <div class="container">
+        <h2>Visi & Misi</h2>
+        <p><strong>Visi:</strong> Terwujudnya Desa Maktangguk yang mandiri, sejahtera, dan berkelanjutan.</p>
+        <p><strong>Misi:</strong> Meningkatkan kualitas pelayanan publik dan mengoptimalkan potensi lokal.</p>
+        
+        <h2 style="margin-top:20px;">Struktur Organisasi</h2>
+        <table>
+            <tr>
+                <th>Jabatan</th>
+                <th>Nama</th>
+            </tr>
+            <tr>
+                <td>Kepala Desa</td>
+                <td>Ahmad Sudrajat</td>
+            </tr>
+            <tr>
+                <td>Sekretaris Desa</td>
+                <td>Siti Nurhaliza</td>
+            </tr>
+        </table>
+    </div>
+    <footer>
+        <p>&copy; 2026 Pemerintah Desa Maktangguk.</p>
+    </footer>
+</body>
+</html>
