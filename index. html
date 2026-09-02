@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Desa Maktangguk - Beranda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di Desa Maktangguk</h1>
+        <p>Website Resmi Informasi Desa</p>
+    </header>
+    <nav>
+        <a href="index.html">Beranda</a>
+        <a href="profil.html">Profil Desa</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="kontak.html">Kontak</a>
+    </nav>
+    <div class="container">
+        <h2>Sekilas Tentang Desa Maktangguk</h2>
+        <p>Desa Maktangguk merupakan desa yang asri dengan semangat gotong royong tinggi dan potensi alam yang melimpah.</p>
+        
+        <div class="card" style="margin-top: 20px;">
+            <h3>Pengumuman Terbaru</h3>
+            <p>Sensus penduduk dan pemutakhiran data keluarga akan dilaksanakan bulan depan.</p>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2026 Pemerintah Desa Maktangguk. Hak Cipta Dilindungi.</p>
+    </footer>
+</body>
+</html>
